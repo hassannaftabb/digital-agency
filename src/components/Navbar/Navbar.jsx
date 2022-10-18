@@ -75,12 +75,12 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
-  const user = JSON.parse(localStorage.getItem('user'));
+  const user = JSON.parse(localStorage.getItem('da-$user_obj'));
   const [signOutLoading, setSignOutLoading] = React.useState(false);
   let signOutUser = () => {
     setSignOutLoading(true);
     signOut(auth);
-    localStorage.removeItem('user');
+    localStorage.removeItem('da-$user_obj');
     window.location = '/';
   };
 

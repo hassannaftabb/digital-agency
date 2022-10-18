@@ -1,10 +1,9 @@
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { doc, getDoc } from 'firebase/firestore';
 import { useFormik } from 'formik';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
-import { auth, db } from '../../firebase';
+import { auth } from '../../firebase';
 import toast, { Toaster } from 'react-hot-toast';
 import Button from '../../components/UI/Button';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
@@ -35,12 +34,7 @@ const LogIn = () => {
           values.email,
           values.password
         ).then(async (res) => {
-          const myDoc = doc(db, 'users', res.user.uid);
-          await getDoc(myDoc).then((r) => {
-            let name = r.data().name;
-            localStorage.setItem('user', JSON.stringify({ ...res.user, name }));
-            setIsLoading(false);
-          });
+          setIsLoading(false);
           toast.success(
             `Welcome back, ${res?.user.email}, lets explore again!`
           );

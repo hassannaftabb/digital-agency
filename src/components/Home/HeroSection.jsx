@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const HeroSection = () => {
-  const user = JSON.parse(localStorage.getItem('user'));
+  const user = JSON.parse(localStorage.getItem('da-$user_obj'));
   const navigate = useNavigate();
   let handleGetStartedClick = () => {
     if (user) {

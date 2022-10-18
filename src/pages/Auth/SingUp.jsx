@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth, db } from '../../firebase';
-import { doc, getDoc, setDoc } from 'firebase/firestore';
 import toast, { Toaster } from 'react-hot-toast';
 import Button from '../../components/UI/Button';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+import { doc, setDoc } from 'firebase/firestore';
 
 const SingUp = () => {
   const [isLoading, setIsLoading] = React.useState(false);
@@ -39,17 +39,8 @@ const SingUp = () => {
         ).then(async (res) => {
           await setDoc(doc(db, 'users', res.user.uid), {
             ...values,
-          }).then(async () => {
-            const myDoc = doc(db, 'users', res.user.uid);
-            await getDoc(myDoc).then((r) => {
-              let name = r.data().name;
-              localStorage.setItem(
-                'user',
-                JSON.stringify({ ...res.user, name })
-              );
-              setIsLoading(false);
-            });
           });
+          setIsLoading(false);
           toast.success(
             `Welcome, ${res?.user.email}, you are in our registers now!`
           );

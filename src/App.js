@@ -14,8 +14,23 @@ import ReputationManagement from './pages/Services/ReputationManagement';
 import SearchEngineOptimization from './pages/Services/SearchEngineOptimization';
 import SocialMediaMarketing from './pages/Services/SocialMediaMarketing';
 import Footer from './components/Footer/Footer';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth, db } from './firebase';
+import { doc, getDoc } from 'firebase/firestore';
+import ChatButtonCard from './components/UI/ChatButtonCard';
+import Chat from './pages/Chat/Chat';
 
 function App() {
+  onAuthStateChanged(auth, async (currentUser) => {
+    const myDoc = doc(db, 'users', currentUser?.uid);
+    await getDoc(myDoc).then((r) => {
+      let name = r.data().name;
+      localStorage.setItem(
+        'da-$user_obj',
+        JSON.stringify({ ...currentUser, name })
+      );
+    });
+  });
   return (
     <BrowserRouter>
       <Navbar />
@@ -53,7 +68,10 @@ function App() {
           path="/services/social-media-marketing"
           element={<SocialMediaMarketing />}
         />
+        {/* Chat */}
+        <Route path="/chat" element={<Chat />} />
       </Routes>
+      <ChatButtonCard />
       <Footer />
     </BrowserRouter>
   );

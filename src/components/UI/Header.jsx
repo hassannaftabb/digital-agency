@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Header = () => {
-  const user = JSON.parse(localStorage.getItem('user'));
+  const user = JSON.parse(localStorage.getItem('da-$user_obj'));
 
   return (
     <>

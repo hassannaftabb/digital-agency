@@ -5,7 +5,7 @@ import Header from '../../components/UI/Header';
 import Stats from '../../components/UI/Stats';
 
 const Home = () => {
-  const user = JSON.parse(localStorage.getItem('user'));
+  const user = JSON.parse(localStorage.getItem('da-$user_obj'));
   return (
     <div>
       {user && <Header />}
