@@ -1,6 +1,6 @@
 import { useFormik } from 'formik';
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth, db } from '../../firebase';
@@ -10,7 +10,6 @@ import Button from '../../components/UI/Button';
 
 const SingUp = () => {
   const [isLoading, setIsLoading] = React.useState(false);
-  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -54,7 +53,7 @@ const SingUp = () => {
           );
         });
         setTimeout(() => {
-          navigate('/');
+          window.location = '/';
         }, 2000);
       } catch (error) {
         setIsLoading(false);

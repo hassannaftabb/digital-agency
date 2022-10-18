@@ -2,7 +2,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 import { useFormik } from 'formik';
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import { auth, db } from '../../firebase';
 import toast, { Toaster } from 'react-hot-toast';
@@ -10,7 +10,6 @@ import Button from '../../components/UI/Button';
 
 const LogIn = () => {
   const [isLoading, setIsLoading] = React.useState(false);
-  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -45,7 +44,7 @@ const LogIn = () => {
           );
         });
         setTimeout(() => {
-          navigate('/');
+          window.location = '/';
         }, 2000);
       } catch (error) {
         setIsLoading(false);

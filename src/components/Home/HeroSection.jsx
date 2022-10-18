@@ -16,28 +16,19 @@ const HeroSection = () => {
       <section className="bg-gray-50">
         <div className="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center">
           <div className="mx-auto max-w-xl text-center">
-            {user ? (
-              <>
-                <h1 className="text-3xl font-extrabold sm:text-5xl">
-                  Welcome <em>{user?.name}</em> to
-                  <strong className="font-extrabold text-indigo-600 sm:block ml-1 sm:ml-0">
-                    Digital Agency
-                  </strong>
-                </h1>
-              </>
-            ) : (
-              <>
-                <h1 className="text-3xl font-extrabold sm:text-5xl">
-                  Get started with
-                  <strong className="font-extrabold text-indigo-600 sm:block ml-1 sm:ml-0">
-                    Digital Agency
-                  </strong>
-                </h1>
-              </>
-            )}
-            <p className="mt-4 sm:text-xl sm:leading-relaxed">
-              Let's get started with digital agency and explore our amazing IT
-              services!
+            <>
+              <h1 className="text-3xl font-extrabold sm:text-5xl">
+                Get Started with
+                <strong className="font-extrabold text-indigo-600 sm:block ml-1 sm:ml-0">
+                  Digital Agency
+                </strong>
+              </h1>
+            </>
+            <p className="mt-4 sm:text-xl sm:leading-relaxed font-bold">
+              <em>
+                Let's get started with digital agency and explore our amazing IT
+                services!
+              </em>
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <div
