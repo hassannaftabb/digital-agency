@@ -81,9 +81,7 @@ export default function Navbar() {
     setSignOutLoading(true);
     signOut(auth);
     localStorage.removeItem('user');
-    setTimeout(() => {
-      window.location = '/';
-    }, 1500);
+    window.location = '/';
   };
 
   return (
