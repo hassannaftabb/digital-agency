@@ -13,6 +13,7 @@ import PayPerClick from './pages/Services/PayPerClick';
 import ReputationManagement from './pages/Services/ReputationManagement';
 import SearchEngineOptimization from './pages/Services/SearchEngineOptimization';
 import SocialMediaMarketing from './pages/Services/SocialMediaMarketing';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
           element={<SocialMediaMarketing />}
         />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
