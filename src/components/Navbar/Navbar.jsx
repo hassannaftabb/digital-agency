@@ -17,6 +17,7 @@ import { BsFillPersonFill } from 'react-icons/bs';
 import { FaHandsHelping } from 'react-icons/fa';
 import { TbSocial } from 'react-icons/tb';
 import React from 'react';
+import Loader from '../UI/Loader';
 
 const solutions = [
   {
@@ -75,7 +76,9 @@ function classNames(...classes) {
 
 export default function Navbar() {
   const user = JSON.parse(localStorage.getItem('user'));
+  const [signOutLoading, setSignOutLoading] = React.useState(false);
   let signOutUser = () => {
+    setSignOutLoading(true);
     signOut(auth);
     localStorage.removeItem('user');
     setTimeout(() => {
@@ -172,7 +175,7 @@ export default function Navbar() {
                   onClick={signOutUser}
                   className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900 cursor-pointer"
                 >
-                  LogOut
+                  {signOutLoading ? <Loader /> : 'SignOut'}
                 </div>
               </>
             ) : (
