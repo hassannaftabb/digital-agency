@@ -72,7 +72,7 @@ const Footer = () => {
               <ul className="space-y-4 text-sm">
                 {solutions?.map((s, i) => {
                   return (
-                    <li>
+                    <li key={i}>
                       <Link
                         className="text-gray-700 transition hover:text-gray-700/75"
                         to={s.href}

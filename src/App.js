@@ -19,21 +19,37 @@ import { auth, db } from './firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import ChatButtonCard from './components/UI/ChatButtonCard';
 import Chat from './pages/Chat/Chat';
+import AdminDashboard from './admin/AdminHome';
+import AdminLogin from './admin/AdminLogin';
+import Messages from './admin/Messages';
 
 function App() {
+  const user = JSON.parse(localStorage.getItem('da-$user_obj'));
+  const admin = JSON.parse(localStorage.getItem('da-$admin_obj'));
   onAuthStateChanged(auth, async (currentUser) => {
-    const myDoc = doc(db, 'users', currentUser?.uid);
-    await getDoc(myDoc).then((r) => {
-      let name = r.data().name;
-      localStorage.setItem(
-        'da-$user_obj',
-        JSON.stringify({ ...currentUser, name })
-      );
-    });
+    if (currentUser?.uid === 'CBBC6N3ZtXUIf8sjSD95RJE1OKi1') {
+      const myDoc = doc(db, 'users', currentUser?.uid);
+      await getDoc(myDoc).then((r) => {
+        let name = r.data().name;
+        localStorage.setItem(
+          'da-$admin_obj',
+          JSON.stringify({ ...currentUser, name })
+        );
+      });
+    } else {
+      const myDoc = doc(db, 'users', currentUser?.uid);
+      await getDoc(myDoc).then((r) => {
+        let name = r.data().name;
+        localStorage.setItem(
+          'da-$user_obj',
+          JSON.stringify({ ...currentUser, name })
+        );
+      });
+    }
   });
   return (
     <BrowserRouter>
-      <Navbar />
+      {!admin && <Navbar />}
       <Routes>
         {/* Index  */}
         <Route path="/" element={<Home />} />
@@ -70,9 +86,17 @@ function App() {
         />
         {/* Chat */}
         <Route path="/chat" element={<Chat />} />
+        {/* Admin  */}
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin/messages" element={<Messages />} />
       </Routes>
-      <ChatButtonCard />
-      <Footer />
+      {user && (
+        <>
+          <ChatButtonCard />
+        </>
+      )}
+      {!admin && <Footer />}
     </BrowserRouter>
   );
 }
