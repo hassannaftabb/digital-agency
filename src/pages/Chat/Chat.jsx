@@ -57,9 +57,13 @@ const Chat = () => {
   React.useEffect(() => {
     scrollRef.current?.scrollIntoView({ behaviour: 'smooth' });
   }, [formik.values.text]);
+
+  React.useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  }, []);
   return (
     <>
-      <div className="flex flex-row h-96 antialiased text-gray-800 w-[100%] mx-auto sm:w-[60%]">
+      <div className="flex flex-row h-[80vh] antialiased text-gray-800 w-[100%] mx-auto sm:w-[60%]">
         <div className="flex flex-col h-full w-full bg-white px-4 py-6">
           <div className="flex flex-row items-center py-4 px-6 rounded-2xl shadow">
             <div className="flex items-center justify-center h-10 w-10 rounded-full bg-indigo-500 text-pink-100">
@@ -115,7 +119,7 @@ const Chat = () => {
             </div>
           </div>
           <div className="flex flex-row items-center">
-            <div className="flex flex-row items-center w-full border rounded-3xl h-12 px-2">
+            <div className="flex flex-row items-center w-full rounded-3xl h-12 px-2 border border-indigo-500">
               <div className="w-full">
                 <input
                   type="text"
