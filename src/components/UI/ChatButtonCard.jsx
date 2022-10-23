@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const ChatButtonCard = () => {
   return (
-    <div className="rounded-lg border border-gray-100 text-center shadow-xl fixed bottom-4 right-4 z-50 bg-white w-[20vw]">
+    <div className="rounded-lg border border-gray-100 text-center shadow-xl fixed bottom-4 right-4 z-50 bg-white sm:w-[20vw] w-[80vw]">
       <div className="px-6 py-5">
         <p className="font-medium">Have queries?</p>
         <div className="mt-4 space-y-2">
