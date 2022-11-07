@@ -29,7 +29,7 @@ function App() {
   const user = JSON.parse(localStorage.getItem('da-$user_obj'));
   const admin = JSON.parse(localStorage.getItem('da-$admin_obj'));
   onAuthStateChanged(auth, async (currentUser) => {
-    if (currentUser?.uid === 'CBBC6N3ZtXUIf8sjSD95RJE1OKi1') {
+    if (currentUser?.uid === 'xwsgWWZ7heMECB3d00xNHfy0Obx2') {
       const myDoc = doc(db, 'users', currentUser?.uid);
       await getDoc(myDoc).then((r) => {
         let name = r.data().name;
