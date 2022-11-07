@@ -22,6 +22,8 @@ import Chat from './pages/Chat/Chat';
 import AdminDashboard from './admin/AdminHome';
 import AdminLogin from './admin/AdminLogin';
 import Messages from './admin/Messages';
+import MyOrders from './pages/Orders/MyOrders';
+import Orders from './admin/Orders';
 
 function App() {
   const user = JSON.parse(localStorage.getItem('da-$user_obj'));
@@ -52,44 +54,46 @@ function App() {
       {!admin && <Navbar />}
       <Routes>
         {/* Index  */}
-        <Route path="/" element={<Home />} />
+        <Route path='/' element={<Home />} />
         {/* Auth  */}
-        <Route path="/sign-in" element={<LogIn />} />
-        <Route path="/sign-up" element={<SingUp />} />
+        <Route path='/sign-in' element={<LogIn />} />
+        <Route path='/sign-up' element={<SingUp />} />
         {/* Services */}
-        <Route path="/services" element={<MainServicesPage />} />
+        <Route path='/services' element={<MainServicesPage />} />
         <Route
-          path="/services/web-development"
+          path='/services/web-development'
           element={<WebsiteDevelopment />}
         />
         <Route
-          path="/services/search-engine-optimization"
+          path='/services/search-engine-optimization'
           element={<SearchEngineOptimization />}
         />
-        <Route path="/services/pay-per-click" element={<PayPerClick />} />
+        <Route path='/services/pay-per-click' element={<PayPerClick />} />
         <Route
-          path="/services/mobile-app-development"
+          path='/services/mobile-app-development'
           element={<MobileApplicationDevelopment />}
         />
-        <Route path="/services/content-writing" element={<ContentWriting />} />
+        <Route path='/services/content-writing' element={<ContentWriting />} />
         <Route
-          path="/services/amazon-virtual-assisstance"
+          path='/services/amazon-virtual-assisstance'
           element={<AmazonVirtualAssisstance />}
         />
         <Route
-          path="/services/reputation-management"
+          path='/services/reputation-management'
           element={<ReputationManagement />}
         />
         <Route
-          path="/services/social-media-marketing"
+          path='/services/social-media-marketing'
           element={<SocialMediaMarketing />}
         />
+        <Route path='/my-orders' element={<MyOrders />} />
         {/* Chat */}
-        <Route path="/chat" element={<Chat />} />
+        <Route path='/chat' element={<Chat />} />
         {/* Admin  */}
-        <Route path="/admin/dashboard" element={<AdminDashboard />} />
-        <Route path="/admin/login" element={<AdminLogin />} />
-        <Route path="/admin/messages" element={<Messages />} />
+        <Route path='/admin/dashboard' element={<AdminDashboard />} />
+        <Route path='/admin/login' element={<AdminLogin />} />
+        <Route path='/admin/messages' element={<Messages />} />
+        <Route path='/admin/orders' element={<Orders />} />
       </Routes>
       {user && (
         <>
